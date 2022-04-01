@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>Exemple de template</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+
+<body>
+	<h1>Edition des villes</h1>
+		<!--/* Au revient au contrôleur, avec la méthode POST */-->
+		<form method="POST" action="save">
+		<label for="country">Pays</label>
+			<select name="country"  id="country">
+			{{#countries}} {{! Une option par pays}}
+				<option value="{{id}}">{{name}}</option>
+			{{/countries}}
+		</select>
+			<div class="column">
+				<!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
+				<label for="id">ID :</label>
+				<input type="text" name="id" 
+			        {{#city.id}} value="{{city.id}}" {{/city.id}} 
+					readonly="readonly"/>
+				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
+			</div>
+			<div class="column">
+				<label for="libelle">Nom:</label>
+				<input type="text" name="name" 
+					{{#city.name}} value="{{city.name}}" {{/city.name}} />				
+				<label for="description">Population:</label>
+				<input name="population" value="{{city.population}}" type="text"/>
+
+			</div>
+		
+		</form>		
+		</body>
+		</html>
